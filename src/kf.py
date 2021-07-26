@@ -13,6 +13,6 @@ mylib.kf.argtypes = [numpy.ctypeslib.ndpointer(dtype=numpy.float64),numpy.ctypes
 # calling function
 # make class of kalman filter
 # supporting of numpy arrays input to the c function
-# make usefull for any type of array
+# make useful for any type of array
 
 
