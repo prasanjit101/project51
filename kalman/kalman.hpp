@@ -1,23 +1,24 @@
-#if !defined(KALMAN_HPP)
+#ifndef KALMAN_HPP
 #define KALMAN_HPP
 
 
 #include <iostream>
-#include "kalman.cpp"
 
 
 class kalman
 {
 private:
-    /* data */
-
+    
+protected:
 
 public:
-    kalman(/* args */);
+    // constructors and destrucrtors
+    kalman();
     ~kalman();
+    // functions
 };
 
-kalman::kalman(/* args */)
+kalman::kalman()
 {
 }
 
