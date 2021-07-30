@@ -3,20 +3,28 @@
 
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 template <typename T> //using T for int 
 class Mat {
-public:
+private:
     T n;
-    T m;  
+    T m;
     
-    Mat();
-    float matrix() {
-        vector<vector<float>> mat;
-        return mat;
+public:
+    Mat(T a,T b){
+        n=a;m=b;
+    };
+    vector <vector<float>> mat;
+
+    void setMatrix(vector<vector<float>> A) {
+        mat=A;
     }
+    float getMatrix(){
+        return mat;
+    } 
 };
 
 class kalman

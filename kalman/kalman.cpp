@@ -8,8 +8,6 @@
 using namespace std;
 
 
-
-
 // functions
 kalman::kalman() {}
 kalman::~kalman() {}
