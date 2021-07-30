@@ -1,4 +1,4 @@
-#if !defined(KALMAN_HPP)
+#ifndef KALMAN_HPP
 #define KALMAN_HPP
 
 
