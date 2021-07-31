@@ -24,7 +24,10 @@ public:
     }
     float getMatrix(){
         return mat;
-    } 
+    }
+
+    void transpose();
+    void inverse();
 };
 
 class kalman
