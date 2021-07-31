@@ -133,3 +133,4 @@ dmypy.json
 src/
 .vscode/c_cpp_properties.json
 .vscode/settings.json
+kalman/Filters.code-workspace
