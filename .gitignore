@@ -130,3 +130,7 @@ dmypy.json
 
 # extras
 src/
+kalman/Filters.code-workspace
+.gitignore
+.vscode/settings.json
+.vscode/c_cpp_properties.json
