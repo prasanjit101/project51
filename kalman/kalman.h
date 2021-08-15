@@ -1,34 +1,12 @@
 #ifndef KALMAN_H
 #define KALMAN_H
 
-
+#include "matrix.h"
 #include <iostream>
 #include <vector>
+#include <stdio.h>
 
 using namespace std;
-
-template <typename T> //using T for int 
-class Mat {
-private:
-    T n;
-    T m;
-    
-public:
-    Mat(T a,T b){
-        n=a;m=b;
-    };
-    vector <vector<float>> mat;
-
-    void setMatrix(vector<vector<float>> A) {
-        mat=A;
-    }
-    float getMatrix(){
-        return mat;
-    }
-
-    void transpose();
-    void inverse();
-};
 
 class kalman
 {
@@ -39,19 +17,19 @@ private:
 public:
 
     //state transistion matrix
-    Mat::matrix A_;
+    Matrix<float> mT;
     // input control matrix
-    Mat::matrix B_;
+    Matrix<float> mC;
     // measurement matrix
-    Mat::matrix C_;
+    Matrix<float> mM;
     // measurement noise covariance 
-    Mat::matrix Ez_;
+    Matrix<float> mEz;
     // process noise covariance
-    Mat::matrix Ex_;
+    Matrix<float> mEx_;
     // state vector
-    vector<float> x_;
+    vector<float> x;
     // state covariance matrix
-    Mat::matrix P_;
+    Matrix<float> mP;
 
 
     kalman();
