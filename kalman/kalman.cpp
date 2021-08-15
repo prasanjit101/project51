@@ -15,68 +15,47 @@ void kalman::Init() {
 
     //  initialize variables
 }
-
-void kalman::Predict(float dt, Mat Q, float u) {
+template <typename T>
+void kalman::Predict(float dt, Matrix Q, float u) {
     
     Ex = Q * dt;
     // prediction 
-    Mat A = Mat(
+    Matrix<T> A = Matrix(
         1, -dt,
         0, 1
     );
    
-    Mat B = Mat(dt, 0);
+    Matrix<T> B = Matrix(dt, 0);
     
     x = A * x + B * u;  // current state
 
-    Mat At = Mat::transpose(A);
+    Matrix<T> At = Matrix::transpose(A);
 
     P = A * P * At + Ex; // next covariance matrix
 }
 
-void kalman::Update(float z, Mat P, float C) {
+void kalman::Update(float z, Matrix P, float C) {
     // updation
     
-    Mat Ez = Mat(
+    Matrix<T> Ez = Matrix(){
         1, 1,
         0, 0
-    );
-    Mat I = Mat(
+    };
+    Matrix<T> I = Matrix(
         1, 0,
         0, 1
     );
 
-    Mat C = Mat(1, 0);
-    Mat Ct = Mat::transpose(C);
+    Matrix<T> C = Matrix(1, 0);
+    Matrix<T> Ct = Matrix::transpose(C);
     
     S = C * P * Ct + Ez;
-    K = P * Ct * (Mat::inverse(S)); // Kalman gain
+    K = P * Ct * (Matrix::inverse(S)); // Kalman gain
 
     float y = z - x[0];
-    x = x + Mat(K[0], K[1]) * y; // updating state estimate
+    x = x + Matrix(K[0], K[1]) * y; // updating state estimate
     
     P = (I - K * C) * P; // updating covariance matrix
 }
 
-Mat Mat::transpose(vector<vector<int>> &b)
-{
-    if (b.size() == 0)
-        return;
 
-    vector<vector<int>> trans_vec(b[0].size(), vector<int>());
-
-    for (int i = 0; i < b.size(); i++)
-    {
-        for (int j = 0; j < b[i].size(); j++)
-        {
-            trans_vec[j].push_back(b[i][j]);
-        }
-    }
-
-    b = trans_vec; 
-    return b;
-}
-
-Mat Mat::inverse(){
-    // code for inversing a matrix
-}

@@ -1,3 +1,5 @@
+include "matrix.h"
+
 #ifndef KALMAN_H
 #define KALMAN_H
 
@@ -35,11 +37,11 @@ public:
     kalman();
     virtual ~kalman();
 
-    void Init ();
+    void Init();
 
-    void Predict();
+    void Predict(float dt, Q_, float u);
 
-    void Update();
+    void Update(float z, P_, float C);
     
 
 };
