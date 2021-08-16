@@ -57,7 +57,11 @@ cout<<M3;
 
 ```Matrix object declaration -
     Matrix<float> Mat(vector);
-    or
+or
+    Matrix<float> Mat({{1,2},{3,4}});
+or
     Matrix(row,col);
 ```
+
+## Input :
 

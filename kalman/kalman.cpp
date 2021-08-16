@@ -15,21 +15,18 @@ void kalman::Init() {
 
     //  initialize variables
 }
-template <typename T>
+template <typename U>
 void kalman::Predict(float dt, Matrix Q, float u) {
     
     Ex = Q * dt;
     // prediction 
-    Matrix<T> A = Matrix(
-        1, -dt,
-        0, 1
-    );
+    Matrix<U> A = Matrix({{1, -dt},{0, 1}});
    
-    Matrix<T> B = Matrix(dt, 0);
+    Matrix<U> B = Matrix(dt, 0);
     
     x = A * x + B * u;  // current state
 
-    Matrix<T> At = Matrix::transpose(A);
+    Matrix<U> At = A.transpose();
 
     P = A * P * At + Ex; // next covariance matrix
 }
@@ -37,17 +34,11 @@ void kalman::Predict(float dt, Matrix Q, float u) {
 void kalman::Update(float z, Matrix P, float C) {
     // updation
     
-    Matrix<T> Ez = Matrix(){
-        1, 1,
-        0, 0
-    };
-    Matrix<T> I = Matrix(
-        1, 0,
-        0, 1
-    );
+    Matrix<U> Ez = Matrix({1, 1},{0, 0});
+    Matrix<U> I = Matrix({1,0},{0,1});
 
-    Matrix<T> C = Matrix(1, 0);
-    Matrix<T> Ct = Matrix::transpose(C);
+    Matrix<U> C = Matrix({1, 0});
+    Matrix<U> Ct = C.transpose();
     
     S = C * P * Ct + Ez;
     K = P * Ct * (Matrix::inverse(S)); // Kalman gain
