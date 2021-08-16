@@ -16,22 +16,23 @@ void kalman::Init() {
     //  initialize variables
 }
 template <typename U>
-void kalman::Predict(float dt, Matrix Q, float u) {
+void Predict(float dt, Matrix<U> Q, float u) {
     
-    Ex = Q * dt;
+    Matrix<U> Ex = Q * dt;
     // prediction 
     Matrix<U> A = Matrix({{1, -dt},{0, 1}});
    
     Matrix<U> B = Matrix(dt, 0);
     
-    x = A * x + B * u;  // current state
+    Matrix<U> x = A * x + B * u;  // current state
 
     Matrix<U> At = A.transpose();
 
-    P = A * P * At + Ex; // next covariance matrix
+    Matrix<U> P = A * P * At + Ex; // next covariance matrix
 }
 
-void kalman::Update(float z, Matrix P, float C) {
+template <typename U>
+void Update(float z, Matrix<U> P, float C, Matrix<U> x) {
     // updation
     
     Matrix<U> Ez = Matrix({1, 1},{0, 0});
@@ -40,11 +41,11 @@ void kalman::Update(float z, Matrix P, float C) {
     Matrix<U> C = Matrix({1, 0});
     Matrix<U> Ct = C.transpose();
     
-    S = C * P * Ct + Ez;
-    K = P * Ct * (Matrix::inverse(S)); // Kalman gain
+    Matrix<U> S = C * P * Ct + Ez;
+    Matrix<U> K = P * Ct * (Matrix<U>::inverse(S)); // Kalman gain
 
     float y = z - x[0];
-    x = x + Matrix(K[0], K[1]) * y; // updating state estimate
+    x = x + Matrix<U>(K[0], K[1]) * y; // updating state estimate
     
     P = (I - K * C) * P; // updating covariance matrix
 }

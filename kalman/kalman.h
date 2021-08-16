@@ -30,16 +30,17 @@ public:
     vector<float> x;
     // state covariance matrix
     Matrix<float> mP;
-
+    // initialised state
+    Matrix<float> Q_;
 
     kalman();
     virtual ~kalman();
 
     void Init();
 
-    void Predict(float dt, Q_, float u);
+    void Predict(float dt,Matrix<float> Q_, float u);
 
-    void Update(float z, P_, float C);
+    void Update(float z, Matrix<float> mP, float mC, Matrix<float> x);
     
 
 };

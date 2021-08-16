@@ -64,4 +64,13 @@ or
 ```
 
 ## Input :
-
+```
+T -> State transition matrix
+C -> Control matrix
+M -> Measurement matrix
+Ez -> Measurement Noise matrix
+Ex -> Process noise matrix
+X -> State vector
+P -> State covariance matrix
+```
+---
