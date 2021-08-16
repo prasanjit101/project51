@@ -23,20 +23,19 @@ class Matrix{
         int getRow() const;
         int getCol() const;
 
-        Matrix<T> add(const Matrix<T>& m) const;
-        Matrix<T> subtract(const Matrix<T>& m) const;
-        Matrix<T> multiply(const Matrix<T>& m) const;
-        Matrix<T> dot(const Matrix<T>& m) const;
-        Matrix<T> transpose() const;
-        Matrix<T> multiply(const T& value) const;
-        Matrix<T> divide(const T& value) const;
+        Matrix<T> add(const Matrix<T>& m) const;//add two matrix
+        Matrix<T> subtract(const Matrix<T>& m) const;//subtract one matrix from another
+        Matrix<T> multiply(const Matrix<T>& m) const;//multiply two matrix
+        Matrix<T> dot(const Matrix<T>& m) const;//dot product of two matrix
+        Matrix<T> transpose() const;//transpose a matrix
+        Matrix<T> multiply(const T& value) const;//multiply values
+        Matrix<T> divide(const T& value) const;//divide values
 
-        Matrix<T> applyFunction(T (*function)(T)) const;
-        Matrix<T> subMat(int startH, int startW, int h, int w) const;
+        Matrix<T> applyFunction(T (*function)(T)) const;//apply function to elements
 
-        void fill(const T& value);
-        void put(int h, int w, const T& value);
-        T get(int h, int w) const;
+        void fill(const T& value);//fill matrix with a particular value
+        void put(int h, int w, const T& value);//put the value in a specified index
+        T get(int h, int w) const;//get the value of a specified index
 
         void print(ostream &flux) const;
 
@@ -230,20 +229,6 @@ Matrix<T> Matrix<T>::applyFunction(T (*function)(T)) const{
         }
     }
 
-    return ans;
-}
-
-template <class T>
-Matrix<T> Matrix<T>::subMat(int startH, int startW, int h, int w) const{
-    if(!(startH>=0 && startH+h<=row && startW>=0 && startW+w<=col))
-        throw invalid_argument("Index out of bounds");
-
-    Matrix<T> ans(h,w);
-    for (int i=startH ; i<startH+h ; i++){
-        for (int j=startW ; j<startW+w ; j++){
-            ans.array[i-startH][j-startW] = array[i][j];
-        }
-    }
     return ans;
 }
 
