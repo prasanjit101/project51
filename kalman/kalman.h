@@ -11,7 +11,7 @@ using namespace std;
 class kalman
 {
 private:
-    /* data */
+    
 
 
 public:

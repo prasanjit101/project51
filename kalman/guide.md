@@ -28,8 +28,22 @@
 
 11.get = get(i,j) - *get the value of a specified index*
 
+12.getCofactor(i,j) - *get the cofactor for index i and j*
+
+13.getDeterminant() - *to get the determinant of the matrix*
+
+14.adjMatrix() - *to get the adjoint matrix*
+
+15.inverseMatrix() - *To get the inverse of a matrix*
 
 *where m is a matrix object,v is a value,F is a function name*
+
+### Examples:
+
+Matrix<float> M({{1,2,3},{4,5,6},{7,8,9}});
+M.get(1,2); //to get element at index (1,2)
+M.transpose();
+M.multiply(4);
 
 ---
 ## Operator:
@@ -39,10 +53,10 @@
 *
 /
 <<
-+=
--=
-*=
-/=
++= (object)
+-= (object)
+*= (value,object)
+/= (value)
 ```
 ---
 ### Examples:

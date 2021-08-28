@@ -42,7 +42,7 @@ void Update(float z, Matrix<U> P, float C, Matrix<U> x) {
     Matrix<U> Ct = C.transpose();
     
     Matrix<U> S = C * P * Ct + Ez;
-    Matrix<U> K = P * Ct * (Matrix<U>::inverse(S)); // Kalman gain
+    Matrix<U> K = P * Ct * (S.inverse()); // Kalman gain
 
     float y = z - x[0];
     x = x + Matrix<U>(K[0], K[1]) * y; // updating state estimate
