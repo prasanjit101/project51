@@ -20,29 +20,29 @@ void Predict(float dt, Matrix<U> Q, float u) {
     
     Matrix<U> Ex = Q * dt;
     // prediction 
-    Matrix<U> A = Matrix({{1, -dt},{0, 1}});
+    Matrix<U> A({{1, -dt},{0, 1}});
    
-    Matrix<U> B = Matrix(dt, 0);
+    Matrix<U> B({dt, 0});
     
     Matrix<U> x = A * x + B * u;  // current state
 
     Matrix<U> At = A.transpose();
 
-    Matrix<U> P = A * P * At + Ex; // next covariance matrix
+    Matrix<U> P = (A * P) * At + Ex; // next covariance matrix
 }
 
 template <typename U>
 void Update(float z, Matrix<U> P, float C, Matrix<U> x) {
     // updation
     
-    Matrix<U> Ez = Matrix({1, 1},{0, 0});
-    Matrix<U> I = Matrix({1,0},{0,1});
+    Matrix<U> Ez({{1, 1},{0, 0}});
+    Matrix<U> I({{1,0},{0,1}});
 
-    Matrix<U> C = Matrix({1, 0});
+    Matrix<U> C({1, 0});
     Matrix<U> Ct = C.transpose();
     
-    Matrix<U> S = C * P * Ct + Ez;
-    Matrix<U> K = P * Ct * (S.inverse()); // Kalman gain
+    Matrix<U> S = (C * P) * Ct + Ez;
+    Matrix<U> K = (P * Ct) * (S.inverse()); // Kalman gain
 
     float y = z - x[0];
     x = x + Matrix<U>(K[0], K[1]) * y; // updating state estimate

@@ -6,35 +6,35 @@
 ## Methods :
 
 
-1.add- add(m) - *add two matrix*
+1.add- M.add(m) - *add two matrix*
 
-2.subtract = subtract(m) - *subtract one matrix from another*
+2.subtract = M.subtract(m) - *subtract one matrix from another*
 
-3.multiply = multiply(m) - *multiply two matrix*
+3.multiply = M.multiply(m) - *multiply two matrix*
 
-4.dot = dot(m) - *dot product of two matrix*
+4.dot = M.dot(m) - *dot product of two matrix*
 
-5.transpose = transpose() - *transpose a matrix*
+5.transpose = M.transpose() - *transpose a matrix*
 
-6.multiply by value = multiply(v) - *multiply values*
+6.multiply by value = M.multiply(v) - *multiply values*
 
-7.divide by value = divide(v) - *divide values*
+7.divide by value = M.divide(v) - *divide values*
 
-8.applyFunction = applyFunction(F) - *apply function to elements*
+8.applyFunction = M.applyFunction(F) - *apply function to elements*
 
-9.fill = fill(v) - *fill matrix with a particular value*
+9.fill = M.fill(v) - *fill matrix with a particular value*
 
-10.put = put(i,j,v) - *put the value in a specified index*
+10.put = M.put(i,j,v) - *put the value in a specified index*
 
-11.get = get(i,j) - *get the value of a specified index*
+11.get = M.get(i,j) - *returns the value of a specified index*
 
-12.getCofactor(i,j) - *get the cofactor for index i and j*
+12.Coafctor- M.getCofactor(i,j) - *returns the cofactor of Matrix M for index i and j*
 
-13.getDeterminant() - *to get the determinant of the matrix*
+13.Determinant- M.getDeterminant() - *returns the determinant of the matrix M*
 
-14.adjMatrix() - *to get the adjoint matrix*
+14.Adjoint Matrix- M.adjMatrix() - *returns the adjoint matrix M*
 
-15.inverseMatrix() - *To get the inverse of a matrix*
+15.Inverse Matrix- M.inverseMatrix() - *returns the inverse of a matrix M*
 
 *where m is a matrix object,v is a value,F is a function name*
 
@@ -74,7 +74,14 @@ cout<<M3;
 or
     Matrix<float> Mat({{1,2},{3,4}});
 or
-    Matrix(row,col);
+    Matrix<float>(row,col);
+
+to declare a column matrix-
+    Matrix<float>({{3},{4}});
+
+to declare a row matrix-
+    Matrix<float> ({3,4});
+
 ```
 
 ## Input :
