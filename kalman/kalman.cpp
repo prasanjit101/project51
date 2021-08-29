@@ -32,13 +32,12 @@ void Predict(float dt, Matrix<U> Q, float u) {
 }
 
 template <typename U>
-void Update(float z, Matrix<U> P, float C, Matrix<U> x) {
+void Update(float z, Matrix<U> P, Matrix<U> C, Matrix<U> x) {
     // updation
     
     Matrix<U> Ez({{1, 1},{0, 0}});
     Matrix<U> I({{1,0},{0,1}});
 
-    Matrix<U> C({1, 0});
     Matrix<U> Ct = C.transpose();
     
     Matrix<U> S = (C * P) * Ct + Ez;
