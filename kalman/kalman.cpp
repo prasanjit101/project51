@@ -8,13 +8,18 @@ using namespace std;
 
 
 // functions
-kalman::kalman() {}
-kalman::~kalman() {}
-
-void kalman::Init() {
-
-    //  initialize variables
+template <class U>
+kalman<U>::kalman(Matrix<U> T,Matrix<U> C,Matrix<U> M,Matrix<U> Ez,Matrix<U> Ex,Matrix<U> X,Matrix<U> P) {
+    this->T=T;
+    this->C=C;
+    this->M=M;
+    this->Ez=Ez;
+    this->Ex=Ex;
+    this->X=X;
+    this->P=P;
 }
+
+
 template <typename U>
 void Predict(float dt, Matrix<U> Q, float u) {
     

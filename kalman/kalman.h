@@ -8,6 +8,7 @@
 
 using namespace std;
 
+template <class U>
 class kalman
 {
 private:
@@ -17,26 +18,26 @@ private:
 public:
 
     //state transistion matrix
-    Matrix<float> mT;
+    Matrix<U> mT;
     // input control matrix
-    Matrix<float> mC;
+    Matrix<U> mC;
     // measurement matrix
-    Matrix<float> mM;
+    Matrix<U> mM;
     // measurement noise covariance 
-    Matrix<float> mEz;
+    Matrix<U> mEz;
     // process noise covariance
-    Matrix<float> mEx_;
+    Matrix<U> mEx_;
     // state vector
-    vector<float> x;
+    vector<U> x;
     // state covariance matrix
-    Matrix<float> mP;
+    Matrix<U> mP;
     // initialised state
-    Matrix<float> Q_;
+    Matrix<U> Q_;
 
-    kalman();
+    kalman(Matrix<U>,Matrix<U>,Matrix<U>,Matrix<U>,Matrix<U>,Matrix<U>,Matrix<U>);
     virtual ~kalman();
 
-    void Init();
+    void Init(Matrix<U> T,Matrix<U> C,Matrix<U> M,Matrix<U> Ez,Matrix<U> Ex,Matrix<U> X,Matrix<U> P);
 
     void Predict(float dt,Matrix<float> Q_, float u);
 
